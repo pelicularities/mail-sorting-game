@@ -58,14 +58,63 @@
         [bins[3], bins[4], bins[5]]
       ];
 
-      let currentBin = bins[0];
+      let currentBinX = 0;
+      let currentBinY = 0;
+      let currentBin = grid[currentBinX][currentBinY];
 
       currentBin.classList.add('currentBin');
+      
+      const moveRight = (grid, currentBinX, currentBinY) => {
+        const nextBinY = Math.min(grid[0].length - 1, currentBinY + 1);
+        updateCurrentBin(currentBinX, nextBinY);
+      };
+
+      const moveLeft = (grid, currentBinX, currentBinY) => {
+        const nextBinY = Math.max(0, currentBinY - 1);
+        updateCurrentBin(currentBinX, nextBinY);
+      };
+
+      const moveUp = (grid, currentBinX, currentBinY) => {
+        const nextBinX = Math.max(0, currentBinX - 1);
+        updateCurrentBin(nextBinX, currentBinY);
+      };
+
+      const moveDown = (grid, currentBinX, currentBinY) => {
+        const nextBinX = Math.min(grid.length - 1, currentBinX + 1);
+        updateCurrentBin(nextBinX, currentBinY);
+      };
+
+      const updateCurrentBin = (nextBinX, nextBinY) => {
+        currentBin.classList.remove('currentBin');
+        currentBinX = nextBinX;
+        currentBinY = nextBinY;
+        currentBin = grid[currentBinX][currentBinY];
+        currentBin.classList.add('currentBin');
+      }
 
       document.addEventListener("keyup", (event) => {
-        const key = event.key;
         const code = event.code;
-        console.log(`${key}: ${code}`);
+
+        switch (code) {
+          case ARROW_UP:
+            moveUp(grid, currentBinX, currentBinY);
+            break;
+          case ARROW_DOWN:
+            moveDown(grid, currentBinX, currentBinY);
+            break;
+          case ARROW_LEFT:
+            moveLeft(grid, currentBinX, currentBinY);
+            break;
+          case ARROW_RIGHT:
+            moveRight(grid, currentBinX, currentBinY);
+            break;
+          case SPACE:
+            console.log("space");
+            break;
+          default:
+            console.log("no action");
+            break;
+        }
       });
     });
   </script>
