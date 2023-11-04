@@ -6,37 +6,78 @@
   <title>Wasteland</title>
   <style type="text/css">
     #gameplay-area {
-      border: 2px solid #000000;
+      border: 1px solid #000000;
       margin: auto;
-      width: 640px;
-      height: 480px;
+      width: 45rem;
+      height: 30rem;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-    }
-    #player {
-      width: 32px;
-      height: 32px;
-      background-color: #FF0000;
-      border-radius: 50%;
+      padding: 1rem;
     }
     .bin {
-      border: 1px solid #00FF00;
+      border: 10px solid white;
+      border-radius: 50%;
+    }
+    .bin[data-id="0"] {
+      background-color: brown;
+    }
+    .bin[data-id="1"] {
+      background-color: green;
+    }
+    .bin[data-id="2"] {
+      background-color: whitesmoke;
+    }
+    .bin[data-id="3"] {
+      background-color: yellow;
+    }
+    .bin[data-id="4"] {
+      background-color: blue;
+    }
+    .bin[data-id="5"] {
+      background-color: purple;
+    }
+
+    .currentBin {
+      border: 10px solid #FF0000;
     }
   </style>
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
       console.log("DOM CONTENT LOADED");
+      const bins = Array.from(document.querySelectorAll('.bin'));
+      console.log(bins);
+
+      const ARROW_UP = "ArrowUp";
+      const ARROW_DOWN = "ArrowDown";
+      const ARROW_RIGHT = "ArrowRight";
+      const ARROW_LEFT = "ArrowLeft";
+      const SPACE = "Space";
+      
+      const grid = [
+        [bins[0], bins[1], bins[2]],
+        [bins[3], bins[4], bins[5]]
+      ];
+
+      let currentBin = bins[0];
+
+      currentBin.classList.add('currentBin');
+
+      document.addEventListener("keyup", (event) => {
+        const key = event.key;
+        const code = event.code;
+        console.log(`${key}: ${code}`);
+      });
     });
   </script>
 </head>
 <body>
   <div id="gameplay-area">
-    <div id="bin-1" class="bin"></div>
-    <div id="bin-2" class="bin"></div>
-    <div id="bin-3" class="bin"></div>
-    <div id="bin-4" class="bin"></div>
-    <div id="bin-5" class="bin"></div>
-    <div id="bin-6" class="bin"></div>
+    <div class="bin" data-id="0"></div>
+    <div class="bin" data-id="1"></div>
+    <div class="bin" data-id="2"></div>
+    <div class="bin" data-id="3"></div>
+    <div class="bin" data-id="4"></div>
+    <div class="bin" data-id="5"></div>
   </div>
 </body>
 </html>
