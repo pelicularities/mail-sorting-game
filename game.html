@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wasteland</title>
+  <style type="text/css">
+    #gameplay-area {
+      border: 2px solid #000000;
+      margin: auto;
+      width: 640px;
+      height: 480px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    #player {
+      width: 32px;
+      height: 32px;
+      background-color: #FF0000;
+      border-radius: 50%;
+    }
+    .bin {
+      border: 1px solid #00FF00;
+    }
+  </style>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM CONTENT LOADED");
+    });
+  </script>
+</head>
+<body>
+  <div id="gameplay-area">
+    <div id="bin-1" class="bin"></div>
+    <div id="bin-2" class="bin"></div>
+    <div id="bin-3" class="bin"></div>
+    <div id="bin-4" class="bin"></div>
+    <div id="bin-5" class="bin"></div>
+    <div id="bin-6" class="bin"></div>
+  </div>
+</body>
+</html>
