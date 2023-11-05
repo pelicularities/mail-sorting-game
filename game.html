@@ -52,12 +52,20 @@
     #next-color-display {
       border-radius: 50%;
       aspect-ratio: 1 / 1;
-      height: 6rem;
-      max-height: 6rem;
+      margin: 1rem;
+      height: calc(100% - 1rem);
       grid-column: 2;
     }
     #metadata-display {
       font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      justify-self: flex-end;
+      padding-right: 1.5rem;
     }
     #game-overlay {
       position: absolute;
@@ -209,7 +217,6 @@
               moveRight(grid, currentBinX, currentBinY);
               break;
             case SPACE:
-              console.log("space");
               throwTrash(currentBin);
               break;
             default:
@@ -247,7 +254,9 @@
 <body>
   <div id="gameplay-area">
     <div id="game-overlay">
-      <h1>Press ENTER to start game</h1>
+      <h1>Arrow keys to move</h1>
+      <h1>SPACE to select</h1>
+      <h1>ENTER to start game</h1>
       <h1 id="final-score"></h1>
     </div>
     <div class="bin" data-id="0"></div>
